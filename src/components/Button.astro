@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+const variant = {
+  primary: "bg-theme-purple text-theme-white hover:bg-theme-white hover:text-black",
+  secondary: "bg-theme-white text-black hover:bg-theme-purple hover:text-theme-white",
+};
+
+interface Props extends HTMLAttributes<"button"> {
+  theme?: keyof typeof variant;
+}
+
+const { theme = "primary", ...rest } = Astro.props as Props;
+---
+
+<button
+  id={rest.id}
+  type="button"
+  class:list={[
+    "rounded-md px-6 py-3 shadow-md transition duration-300",
+    variant[theme],
+    rest.class,
+  ]}
+>
+  <slot>Button</slot>
+</button>

@@ -1,0 +1,23 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<header>
+  <nav class="container mt-4 flex items-center py-4 sm:mt-12">
+    <div class="py-1">
+      <img src="/logo-bookmark.svg" alt="Bookmark Landing Page" />
+    </div>
+    <ul class="text-theme-blue hidden flex-1 items-center justify-end gap-12 text-xs uppercase sm:flex">
+      <li class="cursor-pointer">Features</li>
+      <li class="cursor-pointer">Pricing</li>
+      <li class="cursor-pointer">Contact</li>
+      <button
+        type="button"
+        class="bg-theme-red rounded-md px-7 py-3 text-white uppercase hover:cursor-pointer">Login</button
+      >
+    </ul>
+    <div class="flex flex-1 justify-end sm:hidden">
+      <Icon name="fa6-solid:bars" class="text-2xl" />
+    </div>
+  </nav>
+</header>

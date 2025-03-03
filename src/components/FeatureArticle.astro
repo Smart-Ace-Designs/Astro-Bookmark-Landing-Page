@@ -1,0 +1,50 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+import Button from "./Button.astro";
+
+interface Props {
+  imagePath: string;
+  orientation: "imageFirst" | "contentFirst";
+}
+const { imagePath, orientation = "imagefirst" } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/*.{jpeg,jpg,png,gif}");
+if (!images[imagePath])
+  throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+---
+
+<article class="relative">
+  <div
+    class:list={[
+      "container flex flex-col items-center justify-center gap-x-24",
+      orientation === "contentFirst" ? "lg:flex-row-reverse" : "lg:flex-row",
+    ]}
+  >
+    <div class="z-10 mb-10 flex flex-1 justify-center lg:mb-0">
+      <Image
+        src={images[imagePath]()}
+        loading="lazy"
+        alt="Bookmark Feature"
+        class="h-5/6 w-5/6 sm:h-3/4 sm:w-3/4 md:h-full md:w-full"
+      />
+    </div>
+    <div class="flex flex-1 flex-col items-center lg:items-start">
+      <h1 class="text-theme-blue text-3xl">
+        <slot name="header" />
+      </h1>
+      <p class="text-theme-gray my-4 text-center sm:w-3/4 lg:w-full lg:text-left">
+        <slot name="content" />
+      </p>
+      <Button theme="primary">More Info</Button>
+    </div>
+    <div
+      class:list={[
+        "bg-theme-purple absolute -bottom-24 hidden h-80 w-2/4 overflow-hidden lg:block",
+        orientation === "imageFirst" ? "-left-36 rounded-r-full" : "-right-36 rounded-l-full",
+      ]}
+    >
+    </div>
+  </div>
+</article>

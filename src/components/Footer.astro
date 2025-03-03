@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon/components";
+import Image from "astro/components/Image.astro";
+
+import logo from "@/assets/logo-bookmark-white.png";
+---
+
+<footer class="bg-theme-blue py-8">
+  <div class="container flex flex-col items-center md:flex-row">
+    <div class="flex flex-1 flex-wrap items-center justify-center gap-12 md:justify-start">
+      <Image src={logo} alt="Bookmark" loading="lazy" />
+      <ul class="flex gap-12 text-xs text-white uppercase">
+        <li class="cursor-pointer">Features</li>
+        <li class="cursor-pointer">Pricing</li>
+        <li class="cursor-pointer">Contact</li>
+      </ul>
+    </div>
+    <ul class="mt-12 flex gap-10 md:mt-0">
+      <li>
+        <Icon name="fa6-brands:x-twitter" class="text-2xl text-white hover:cursor-pointer" />
+      </li>
+      <li>
+        <Icon name="fa6-brands:square-facebook" class="text-2xl text-white hover:cursor-pointer" />
+      </li>
+    </ul>
+  </div>
+</footer>

@@ -1,0 +1,37 @@
+---
+import FeatureArticle from "./FeatureArticle.astro";
+---
+
+<section class="bg-theme-white mt-20 py-20 lg:mt-60">
+  <div class="mx-auto px-2 sm:w-3/4 lg:w-5/12">
+    <h1 class="text-theme-blue text-center text-3xl">Features</h1>
+    <p class="text-theme-gray mt-4 text-center">
+      Our aim is to make it quick and easy for you to access your favorite websites. Your bookmarks sync
+      between your devices so you can access them on the go.
+    </p>
+  </div>
+
+  <div class="mt-20 space-y-20 lg:mt-24 lg:space-y-52">
+    <FeatureArticle imagePath="/src/assets/illustration-features-tab-1.png" orientation="imageFirst">
+      <Fragment slot="header">Bookmark in one click</Fragment>
+      <Fragment slot="content">
+        Organize your bookmarks however you like. Our simple drag-and-drop interface give you complete
+        control over how you manage your favorite sites.
+      </Fragment>
+    </FeatureArticle>
+    <FeatureArticle imagePath="/src/assets/illustration-features-tab-2.png" orientation="contentFirst">
+      <Fragment slot="header">Intelligent search</Fragment>
+      <Fragment slot="content">
+        Our powerful search feature will help you find saved sites in no time at all. No need to trawl
+        through all of your bookmarks.
+      </Fragment>
+    </FeatureArticle>
+    <FeatureArticle imagePath="/src/assets/illustration-features-tab-3.png" orientation="imageFirst">
+      <Fragment slot="header">Share your bookmarks</Fragment>
+      <Fragment slot="content">
+        Easily share your bookmarks and collections with others. Create a shareable link that you can
+        send at the click of a button.
+      </Fragment>
+    </FeatureArticle>
+  </div>
+</section>
