@@ -9,7 +9,6 @@ Credit:  Original solution provided by [John Komarnicki](https://www.youtube.com
 - [Overview](#overview)
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
-  - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
 - [Author](#author)
@@ -28,11 +27,6 @@ Users should be able to:
 
 ### Screenshot
 ![Screenshot 2025-03-02 213523](https://github.com/user-attachments/assets/749ce74b-1035-4614-a486-85c726ee8070)
-
-### Links
-
-- Solution URL: [GitHub](https://github.com/Smart-Ace-Designs/Astro-Bookmark-Landing-Page)
-- Live Site URL: [Netlify](https://smartacedesigns-astro-blp.netlify.app/)
 
 ## My process
 
