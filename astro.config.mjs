@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -18,4 +18,13 @@ export default defineConfig({
       },
     }),
   ],
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.google(),
+        name: "Poppins",
+        cssVariable: "--font-poppins",
+      },
+    ],
+  },
 });

@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
+import { Font } from "astro:assets";
 
 import Header from "@/components/Header.astro";
 
@@ -18,10 +19,11 @@ const { title = "Astro", description = "An Astro website." } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <Font cssVariable="--font-poppins" preload />
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class="font-poppins overflow-x-hidden bg-white">
+  <body class="overflow-x-hidden bg-white font-poppins">
     <Header />
     <slot />
   </body>
