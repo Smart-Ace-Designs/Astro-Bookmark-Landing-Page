@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.16",
-    "astro": "5.15.1",
+    "astro": "5.15.2",
     "astro-icon": "^1.1.5",
     "install": "^0.13.0",
     "tailwindcss": "^4.1.16"
