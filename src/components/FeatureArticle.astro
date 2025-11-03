@@ -31,17 +31,17 @@ if (!images[imagePath])
       />
     </div>
     <div class="flex flex-1 flex-col items-center lg:items-start">
-      <h1 class="text-theme-blue text-3xl">
+      <h1 class="text-3xl text-theme-blue">
         <slot name="header" />
       </h1>
-      <p class="text-theme-gray my-4 text-center sm:w-3/4 lg:w-full lg:text-left">
+      <p class="my-4 text-center text-theme-gray sm:w-3/4 lg:w-full lg:text-left">
         <slot name="content" />
       </p>
       <Button theme="primary">More Info</Button>
     </div>
     <div
       class:list={[
-        "bg-theme-purple absolute -bottom-24 hidden h-80 w-2/4 overflow-hidden lg:block",
+        "absolute -bottom-24 hidden h-80 w-2/4 overflow-hidden bg-theme-purple lg:block",
         orientation === "imageFirst" ? "-left-36 rounded-r-full" : "-right-36 rounded-l-full",
       ]}
     >

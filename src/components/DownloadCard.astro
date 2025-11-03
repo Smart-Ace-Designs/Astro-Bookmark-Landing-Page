@@ -19,11 +19,11 @@ if (!images[imagePath])
 <div class:list={["flex flex-col rounded-md shadow-md", rest.class]}>
   <div class="p6 flex flex-col items-center">
     <Image src={images[imagePath]()} loading="lazy" alt={alt} />
-    <h3 class="text-theme-blue mt-5 mb-2 text-lg">
+    <h3 class="mt-5 mb-2 text-lg text-theme-blue">
       <slot name="header" />
     </h3>
-    <p class="text-theme-gray mb-2 font-light"><slot name="content" /></p>
+    <p class="mb-2 font-light text-theme-gray"><slot name="content" /></p>
   </div>
-  <hr class="border-theme-white border-b" />
+  <hr class="border-b border-theme-white" />
   <div class="flex p-6"><Button theme="primary" class="flex-1">Add & Install Extension</Button></div>
 </div>

@@ -7,4 +7,3 @@ A solution to the [Bookmark Landing Page](https://www.frontendmentor.io/challeng
 > Adapted to use Astro component-based design with Tailwind CSS v4.
 
 ![Screenshot 2025-03-02 213523](https://github.com/user-attachments/assets/749ce74b-1035-4614-a486-85c726ee8070)
-
