@@ -18,15 +18,13 @@ export default defineConfig({
       },
     }),
   ],
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.google(),
-        name: "Poppins",
-        cssVariable: "--font-poppins",
-        weights: [300, 400],
-        styles: ["normal"],
-      },
-    ],
-  },
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "Poppins",
+      cssVariable: "--font-poppins",
+      weights: [300, 400],
+      styles: ["normal"],
+    },
+  ],
 });
