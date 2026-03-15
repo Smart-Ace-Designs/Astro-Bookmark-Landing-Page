@@ -7,13 +7,22 @@ import { Icon } from "astro-icon/components";
     <div class="py-1">
       <img src="/logo-bookmark.svg" alt="Bookmark Landing Page" />
     </div>
-    <ul class="hidden flex-1 items-center justify-end gap-12 text-xs text-theme-blue uppercase sm:flex">
-      <li class="cursor-pointer">Features</li>
-      <li class="cursor-pointer">Pricing</li>
-      <li class="cursor-pointer">Contact</li>
+    <ul
+      class="hidden flex-1 items-center justify-end gap-12 text-xs text-theme-blue uppercase sm:flex"
+    >
+      <a href="/">
+        <li class="cursor-pointer">Features</li>
+      </a>
+      <a href="/">
+        <li class="cursor-pointer">Pricing</li>
+      </a>
+      <a href="/">
+        <li class="cursor-pointer">Contact</li>
+      </a>
       <button
         type="button"
-        class="rounded-md bg-theme-red px-7 py-3 text-white uppercase hover:cursor-pointer">Login</button
+        class="rounded-md bg-theme-red px-7 py-3 text-white uppercase hover:cursor-pointer"
+        >Login</button
       >
     </ul>
     <div class="flex flex-1 justify-end sm:hidden">
