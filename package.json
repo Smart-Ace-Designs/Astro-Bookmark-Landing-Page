@@ -12,10 +12,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.2.1",
-    "astro": "6.0.5",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "6.0.6",
     "astro-icon": "^1.1.5",
-    "tailwindcss": "^4.2.1"
+    "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
     "@iconify-json/fa6-brands": "^1.2.6",
