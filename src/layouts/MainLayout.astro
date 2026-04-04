@@ -22,10 +22,10 @@ const { title = "Astro", description = "An Astro website." } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
     <title>{title}</title>
 
-    <Font cssVariable="--font-poppins" preload />
+    <Font cssVariable="--font-rubik" preload />
     <ClientRouter />
   </head>
-  <body class="overflow-x-hidden bg-white font-poppins">
+  <body class="font-rubik overflow-x-hidden bg-white">
     <Header />
     <slot />
   </body>

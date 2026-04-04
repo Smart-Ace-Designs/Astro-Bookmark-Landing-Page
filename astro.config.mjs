@@ -21,9 +21,9 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.google(),
-      name: "Poppins",
-      cssVariable: "--font-poppins",
-      weights: [300, 400],
+      name: "Rubik",
+      cssVariable: "--font-rubik",
+      weights: [400, 500],
       styles: ["normal"],
     },
   ],
