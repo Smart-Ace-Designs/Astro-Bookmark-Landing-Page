@@ -1,5 +1,6 @@
 ---
 import FeatureArticle from "./FeatureArticle.astro";
+import features from "../data/features.ts";
 ---
 
 <section class="mt-20 py-20 lg:mt-20">
@@ -13,9 +14,7 @@ import FeatureArticle from "./FeatureArticle.astro";
   <div
     class="mx-auto flex max-w-3xl justify-around border-b border-theme-gray/50 py-6 text-theme-blue"
   >
-    <button>Simple Bookmarking</button>
-    <button>Speedy Searching</button>
-    <button>Easy Sharing</button>
+    {features.map((feature) => <button class="cursor-pointer">{feature.title}</button>)}
   </div>
   <div class="mt-20 space-y-20 lg:mt-22 lg:space-y-52">
     <FeatureArticle
