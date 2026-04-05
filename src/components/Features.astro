@@ -12,40 +12,37 @@ import features from "../data/features.ts";
     </p>
   </div>
   <div
+    role="tablist"
     class="mx-auto flex max-w-3xl justify-around border-b border-theme-gray/50 py-6 text-theme-blue"
   >
-    {features.map((feature) => <button class="cursor-pointer">{feature.title}</button>)}
+    {
+      features.map((feature, index) => (
+        <button role="tab" class="cursor-pointer" data-index={index}>
+          {feature.title}
+        </button>
+      ))
+    }
   </div>
-  <div class="mt-20 space-y-20 lg:mt-22 lg:space-y-52">
-    <FeatureArticle
-      imagePath="/src/assets/illustration-features-tab-1.png"
-      orientation="imageFirst"
-    >
-      <Fragment slot="header">Bookmark in one click</Fragment>
+  <div class="mt-20 space-y-20 lg:mt-22 lg:space-y-52" id="tab-content">
+    <FeatureArticle imagePath={features[0].image} orientation="imageFirst">
+      <Fragment slot="header">{features[0].title}</Fragment>
       <Fragment slot="content">
-        Organize your bookmarks however you like. Our simple drag-and-drop interface give you
-        complete control over how you manage your favorite sites.
+        {features[0].description}
       </Fragment>
     </FeatureArticle>
-    <!-- <FeatureArticle
-      imagePath="/src/assets/illustration-features-tab-2.png"
-      orientation="contentFirst"
-    >
-      <Fragment slot="header">Intelligent search</Fragment>
-      <Fragment slot="content">
-        Our powerful search feature will help you find saved sites in no time at all. No need to
-        trawl through all of your bookmarks.
-      </Fragment>
-    </FeatureArticle>
-    <FeatureArticle
-      imagePath="/src/assets/illustration-features-tab-3.png"
-      orientation="imageFirst"
-    >
-      <Fragment slot="header">Share your bookmarks</Fragment>
-      <Fragment slot="content">
-        Easily share your bookmarks and collections with others. Create a shareable link that you
-        can send at the click of a button.
-      </Fragment>
-    </FeatureArticle> -->
   </div>
 </section>
+
+<script>
+  const tabs = document.querySelectorAll('[role="tab"]');
+  const tabContent = document.getElementById("tab-content");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
+      tab.setAttribute("aria-selected", "true");
+      const index = tab.getAttribute("data-index");
+      // TODO: Show corresponding content
+    });
+  });
+</script>
