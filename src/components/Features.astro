@@ -24,7 +24,7 @@ import features from "../data/features.ts";
     }
   </div>
   <div class="mt-20 space-y-20 lg:mt-22 lg:space-y-52" id="tab-content">
-    <FeatureArticle imagePath={features[0].image} orientation="imageFirst">
+    <FeatureArticle imagePath={features[0].image}>
       <Fragment slot="header">{features[0].title}</Fragment>
       <Fragment slot="content">
         {features[0].description}
@@ -34,6 +34,8 @@ import features from "../data/features.ts";
 </section>
 
 <script>
+  import features from "../data/features.ts";
+
   const tabs = document.querySelectorAll('[role="tab"]');
   const tabContent = document.getElementById("tab-content");
 
@@ -41,8 +43,22 @@ import features from "../data/features.ts";
     tab.addEventListener("click", () => {
       tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
       tab.setAttribute("aria-selected", "true");
-      const index = tab.getAttribute("data-index");
-      // TODO: Show corresponding content
+      const indexAttr = tab.getAttribute("data-index");
+      if (!indexAttr || !tabContent) return;
+
+      const index = parseInt(indexAttr);
+      const feature = features[index];
+
+      const article = tabContent.querySelector("article");
+      if (!article) return;
+
+      const headerSlot = article.querySelector("h1");
+      const contentSlot = article.querySelector("p");
+      const img = article.querySelector("img");
+
+      if (headerSlot) headerSlot.textContent = feature.title;
+      if (contentSlot) contentSlot.textContent = feature.description;
+      if (img) img.src = feature.image;
     });
   });
 </script>

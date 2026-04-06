@@ -6,9 +6,8 @@ import Button from "./Button.astro";
 
 interface Props {
   imagePath: string;
-  orientation: "imageFirst" | "contentFirst";
 }
-const { imagePath, orientation = "imagefirst" } = Astro.props;
+const { imagePath } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/*.{jpeg,jpg,png,gif}");
 if (!images[imagePath])
@@ -16,12 +15,7 @@ if (!images[imagePath])
 ---
 
 <article class="relative">
-  <div
-    class:list={[
-      "container flex flex-col items-center justify-center gap-x-24",
-      orientation === "contentFirst" ? "lg:flex-row-reverse" : "lg:flex-row",
-    ]}
-  >
+  <div class="container flex flex-col items-center justify-center gap-x-24 lg:flex-row">
     <div class="z-10 mb-10 flex flex-1 justify-center lg:mb-0">
       <Image
         src={images[imagePath]()}
@@ -40,10 +34,7 @@ if (!images[imagePath])
       <Button theme="primary">More Info</Button>
     </div>
     <div
-      class:list={[
-        "absolute -bottom-24 hidden h-80 w-2/4 overflow-hidden bg-theme-purple lg:block",
-        orientation === "imageFirst" ? "left-0 rounded-r-full" : "right-0 rounded-l-full",
-      ]}
+      class="absolute -bottom-24 left-0 hidden h-80 w-2/4 overflow-hidden rounded-r-full bg-theme-purple lg:block"
     >
     </div>
   </div>
