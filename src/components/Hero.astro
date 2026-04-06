@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Button from "./Button.astro";
-import hero from "@/assets/hero-bg.png";
+import hero from "@/assets/illustration-hero.svg";
 ---
 
 <section class="relative">
@@ -19,11 +19,13 @@ import hero from "@/assets/hero-bg.png";
         <Button theme="secondary">Get it on Firefox</Button>
       </div>
     </div>
-    <div class="z-10 mb-10 flex flex-1 justify-center md:mb-16 lg:mb-0">
+    <div class="z-10 mb-10 flex justify-center md:mb-16 lg:mb-0">
       <Image
         src={hero}
         loading="eager"
         alt="Computer"
+        width={800}
+        height={600}
         class="h-5/6 w-5/6 sm:h-3/4 sm:w-3/4 md:h-full md:w-full"
       />
     </div>
