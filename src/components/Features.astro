@@ -44,14 +44,13 @@ import features from "../data/features.ts";
       tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
       tab.setAttribute("aria-selected", "true");
       const indexAttr = tab.getAttribute("data-index");
-      if (!indexAttr || !tabContent) return;
 
+      if (!indexAttr || !tabContent) return;
       const index = parseInt(indexAttr);
       const feature = features[index];
-
       const article = tabContent.querySelector("article");
-      if (!article) return;
 
+      if (!article) return;
       const headerSlot = article.querySelector("h1");
       const contentSlot = article.querySelector("p");
       const img = article.querySelector("img");
