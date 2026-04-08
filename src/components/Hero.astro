@@ -5,8 +5,8 @@ import hero from "@/assets/illustration-hero.svg";
 ---
 
 <section class="relative">
-  <div class="container mt-14 flex flex-col-reverse items-center gap-12 lg:mt-28 lg:flex-row">
-    <div class="flex flex-1 flex-col items-center lg:items-start">
+  <div class="container mt-14 flex flex-col-reverse items-center gap-13 lg:mt-28 lg:flex-row">
+    <div class="flex flex-1 flex-col lg:items-start">
       <h2
         class="mb-6 text-center text-3xl font-medium text-theme-blue md:text-4xl lg:text-left lg:text-5xl"
       >
@@ -16,22 +16,15 @@ import hero from "@/assets/illustration-hero.svg";
         A clean and simple interface to organize your favorite websites. Open a new browser tab and
         see your sites load instantly. Try it for free.
       </p>
-      <div class="flex flex-wrap justify-center gap-6">
+      <div class="flex justify-center gap-6">
         <Button theme="primary">Get it on Chrome</Button>
         <Button theme="secondary">Get it on Firefox</Button>
       </div>
     </div>
-    <div class="z-10 mb-10 flex justify-center md:mb-16 lg:mb-0">
-      <Image
-        src={hero}
-        loading="eager"
-        alt="Computer"
-        class="h-5/6 w-5/6 sm:h-3/4 sm:w-3/4 md:h-full md:w-full"
-      />
+    <div class="z-10 flex-none shrink-0 overflow-visible lg:translate-x-30">
+      <Image src={hero} loading="eager" alt="Computer" class="h-auto w-auto max-w-none" />
     </div>
   </div>
-  <div
-    class="absolute top-32 right-0 hidden h-80 w-2/4 rounded-l-full bg-theme-purple md:block lg:right-0 lg:-bottom-28"
-  >
+  <div class="absolute top-32 right-0 hidden h-88 w-9/25 rounded-l-full bg-theme-purple md:block">
   </div>
 </section>
