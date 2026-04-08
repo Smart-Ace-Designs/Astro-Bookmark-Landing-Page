@@ -5,10 +5,12 @@ import hero from "@/assets/illustration-hero.svg";
 ---
 
 <section class="relative">
-  <div class="container mt-14 flex flex-col-reverse items-center lg:mt-28 lg:flex-row">
-    <div class="flex flex-1 flex-col lg:items-start">
+  <div
+    class="container mt-14 flex flex-col-reverse items-center gap-x-19 lg:mt-22 lg:flex-row lg:items-center lg:justify-between"
+  >
+    <div class="flex flex-col lg:items-start">
       <h2
-        class="mb-6 text-center text-3xl font-medium text-theme-blue md:text-4xl lg:text-left lg:text-5xl"
+        class="mb-6 text-center text-3xl font-medium text-theme-blue md:text-4xl lg:w-120 lg:text-left lg:text-5xl"
       >
         A Simple Bookmark Manager
       </h2>
@@ -16,15 +18,13 @@ import hero from "@/assets/illustration-hero.svg";
         A clean and simple interface to organize your favorite websites. Open a new browser tab and
         see your sites load instantly. Try it for free.
       </p>
-      <div class="flex justify-center gap-6">
+      <div class="flex flex-col justify-center gap-6 sm:flex-row">
         <Button theme="primary">Get it on Chrome</Button>
         <Button theme="secondary">Get it on Firefox</Button>
       </div>
     </div>
-    <div class="z-10 flex-none shrink-0 overflow-visible lg:translate-x-30">
-      <Image src={hero} loading="eager" alt="Computer" class="h-auto w-auto max-w-none" />
-    </div>
+    <Image src={hero} loading="eager" alt="Computer" class="z-10" />
   </div>
-  <div class="absolute top-32 right-0 hidden h-88 w-9/25 rounded-l-full bg-theme-purple md:block">
+  <div class="absolute top-34 right-0 hidden h-88 w-9/25 rounded-l-full bg-theme-purple lg:block">
   </div>
 </section>
