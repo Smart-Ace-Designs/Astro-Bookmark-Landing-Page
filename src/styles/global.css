@@ -5,10 +5,10 @@
   --breakpoint-xl: 76.5rem;
   --breakpoint-2xl: 76.5rem;
 
-  --color-theme-purple: #5267df;
-  --color-theme-red: #fa5959;
-  --color-theme-blue: #242a45;
-  --color-theme-gray: #9194a2;
+  --color-theme-purple: hsl(231, 69%, 60%);
+  --color-theme-red: hsl(0, 94%, 66%);
+  --color-theme-blue: hsl(229, 31%, 21%);
+  --color-theme-gray: hsl(0, 0%, 97%);
   --color-theme-white: #f7f7f7;
 
   --font-rubik: "Rubik", "sans-serif";
