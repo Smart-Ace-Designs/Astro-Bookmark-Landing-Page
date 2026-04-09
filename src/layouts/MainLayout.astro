@@ -4,6 +4,7 @@ import { ClientRouter } from "astro:transitions";
 import { Font } from "astro:assets";
 
 import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
 
 interface Props {
   title?: string;
@@ -25,8 +26,9 @@ const { title = "Astro", description = "An Astro website." } = Astro.props;
     <Font cssVariable="--font-rubik" preload />
     <ClientRouter />
   </head>
-  <body class="font-rubik overflow-x-hidden bg-white">
+  <body class="overflow-x-hidden bg-white font-rubik">
     <Header />
     <slot />
+    <Footer />
   </body>
 </html>
