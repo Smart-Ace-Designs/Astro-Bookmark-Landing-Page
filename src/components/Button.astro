@@ -15,8 +15,12 @@ const { theme = "primary", ...rest } = Astro.props as Props;
 
 <button
   id={rest.id}
-  type="button"
-  class:list={["rounded-md px-6 py-3 shadow-md transition duration-300", variant[theme], rest.class]}
+  type={rest.type || "button"}
+  class:list={[
+    "rounded-md px-6 py-3 shadow-md transition duration-300",
+    variant[theme],
+    rest.class,
+  ]}
 >
   <slot>Button</slot>
 </button>
