@@ -3,17 +3,17 @@ import FeatureArticle from "./FeatureArticle.astro";
 import features from "../data/features.ts";
 ---
 
-<section class="py-20">
+<section class="my-25">
   <div class="mx-auto mb-10 px-2 sm:w-3/4 lg:w-137.5">
     <h1 class="text-center text-[2rem] font-medium text-theme-blue">Features</h1>
-    <p class="mt-4 text-center text-lg text-theme-blue/50">
+    <p class="mt-7 text-center text-lg text-theme-blue/60">
       Our aim is to make it quick and easy for you to access your favorite websites. Your bookmarks
       sync between your devices so you can access them on the go.
     </p>
   </div>
   <div
     role="tablist"
-    class="relative mx-auto flex max-w-183 border-b-2 border-theme-gray py-6 text-[1.075rem] text-theme-blue/80"
+    class="relative mx-auto flex max-w-183 border-b-2 border-theme-blue/10 py-6 text-[1.075rem] font-medium text-theme-blue/60"
   >
     {
       features.map((feature, index) => (
@@ -32,7 +32,7 @@ import features from "../data/features.ts";
     >
     </div>
   </div>
-  <div class="mt-20 space-y-20 lg:mt-22 lg:space-y-52" id="tab-content">
+  <div class="mt-21 space-y-20 lg:space-y-52" id="tab-content">
     <FeatureArticle imagePath={features[0].image}>
       <Fragment slot="header">{features[0].title}</Fragment>
       <Fragment slot="content">
