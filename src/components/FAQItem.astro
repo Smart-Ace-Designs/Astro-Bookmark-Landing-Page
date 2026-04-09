@@ -1,8 +1,89 @@
 ---
 import { Icon } from "astro-icon/components";
+
+interface Props {
+  faq: {
+    question: string;
+    answer: string;
+  };
+  index: number;
+}
+
+const { faq, index } = Astro.props;
 ---
 
-<div class="flex items-center border-b py-4">
-  <span class="flex-1"><slot /></span>
-  <Icon name="fa6-solid:chevron-down" class="cursor-pointer text-theme-purple" />
-</div>
+<li data-faq-index={index}>
+  <button
+    class="faq-button flex w-full items-center border-b py-4 text-left transition-all duration-200 hover:bg-gray-50"
+    type="button"
+    data-faq-index={index}
+  >
+    <span class="flex-1 pr-4">{faq.question}</span>
+    <Icon
+      name="fa6-solid:chevron-down"
+      class="faq-chevron cursor-pointer text-theme-purple transition-transform duration-200"
+      data-faq-chevron
+    />
+  </button>
+  <div
+    class="faq-content max-h-0 overflow-hidden opacity-0 transition-all duration-300"
+    data-faq-content
+  >
+    <div class="py-4 text-theme-blue/70">
+      {faq.answer}
+    </div>
+  </div>
+</li>
+
+<script>
+  // Type declarations for window property
+  declare global {
+    interface Window {
+      faqInitialized?: boolean;
+    }
+  }
+
+  // This will be executed once per component, so we need to ensure it only runs once
+  if (!window.faqInitialized) {
+    window.faqInitialized = true;
+    let openIndex = -1;
+
+    document.addEventListener("click", (e) => {
+      if (!e.target) return;
+
+      const target = e.target as Element;
+      const button = target.closest(".faq-button");
+      if (!button) return;
+
+      const index = parseInt((button as HTMLElement).dataset.faqIndex || "0");
+      const wasOpen = openIndex === index;
+
+      // Close all items
+      document.querySelectorAll(".faq-content").forEach((content) => {
+        const contentEl = content as HTMLElement;
+        contentEl.style.maxHeight = "0";
+        contentEl.style.opacity = "0";
+      });
+
+      document.querySelectorAll(".faq-chevron").forEach((chevron) => {
+        const chevronEl = chevron as HTMLElement;
+        chevronEl.style.transform = "rotate(0deg)";
+      });
+
+      // Open clicked item if it wasn't already open
+      if (!wasOpen) {
+        openIndex = index;
+        const content = button.nextElementSibling as HTMLElement;
+        const chevron = button.querySelector(".faq-chevron") as HTMLElement;
+
+        if (content && chevron) {
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.style.opacity = "1";
+          chevron.style.transform = "rotate(180deg)";
+        }
+      } else {
+        openIndex = -1;
+      }
+    });
+  }
+</script>
