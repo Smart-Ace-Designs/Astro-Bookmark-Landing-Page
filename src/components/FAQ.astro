@@ -1,6 +1,7 @@
 ---
-import FAQItem from "./FAQItem.astro";
-import Button from "./Button.astro";
+import FAQItem from "@/components/FAQItem.astro";
+import Button from "@/components/Button.astro";
+import faqs from "@/data/faqs";
 ---
 
 <section class="py-20">
@@ -13,10 +14,7 @@ import Button from "./Button.astro";
       </p>
     </div>
     <div class="mx-auto mt-12 flex flex-col sm:w-3/4 lg:w-5/12">
-      <FAQItem>What is a bookmark?</FAQItem>
-      <FAQItem>How can I request a new browser?</FAQItem>
-      <FAQItem>Is there a mobile app?</FAQItem>
-      <FAQItem>What about other Chromium browsers?</FAQItem>
+      {faqs.map((faq) => <FAQItem>{faq.question}</FAQItem>)}
       <Button theme="primary" class="mt-12 self-center">More Info</Button>
     </div>
   </div>
