@@ -65,7 +65,6 @@ import features from "../data/features.ts";
       if (contentSlot) contentSlot.textContent = feature.description;
       if (img) img.src = feature.image;
 
-      // Update active feature indicator
       if (activeFeature) {
         activeFeature.style.transform = `translateX(${index * 100}%)`;
       }
