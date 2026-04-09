@@ -13,16 +13,19 @@ import features from "../data/features.ts";
   </div>
   <div
     role="tablist"
-    class="relative mx-auto flex max-w-183 justify-around border-b border-theme-gray/50 py-6 text-left text-[1.075rem] text-theme-blue/80"
+    class="relative mx-auto flex max-w-183 justify-around border-b-2 border-theme-gray py-6 text-left text-[1.075rem] text-theme-blue/80"
   >
     {
       features.map((feature, index) => (
-        <button role="tab" class="cursor-pointer" data-index={index}>
+        <button role="tab" class="cursor-pointer hover:text-theme-red" data-index={index}>
           {feature.title}
         </button>
       ))
     }
-    <div class="absolute bottom-0 left-0 z-10 w-[33%] translate-x-0 border border-b-theme-red">
+    <div
+      class="absolute bottom-0 left-0 z-10 w-[33%] translate-x-0 border-b-2 border-b-theme-red"
+      id="active-feature"
+    >
     </div>
   </div>
   <div class="mt-20 space-y-20 lg:mt-22 lg:space-y-52" id="tab-content">
@@ -40,6 +43,7 @@ import features from "../data/features.ts";
 
   const tabs = document.querySelectorAll('[role="tab"]');
   const tabContent = document.getElementById("tab-content");
+  const activeFeature = document.getElementById("active-feature");
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -60,6 +64,11 @@ import features from "../data/features.ts";
       if (headerSlot) headerSlot.textContent = feature.title;
       if (contentSlot) contentSlot.textContent = feature.description;
       if (img) img.src = feature.image;
+
+      // Update active feature indicator
+      if (activeFeature) {
+        activeFeature.style.transform = `translateX(${index * 100}%)`;
+      }
     });
   });
 </script>
