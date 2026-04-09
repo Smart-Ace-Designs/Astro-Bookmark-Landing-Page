@@ -13,11 +13,15 @@ import features from "../data/features.ts";
   </div>
   <div
     role="tablist"
-    class="relative mx-auto flex max-w-183 justify-around border-b-2 border-theme-gray py-6 text-left text-[1.075rem] text-theme-blue/80"
+    class="relative mx-auto flex max-w-183 border-b-2 border-theme-gray py-6 text-[1.075rem] text-theme-blue/80"
   >
     {
       features.map((feature, index) => (
-        <button role="tab" class="cursor-pointer hover:text-theme-red" data-index={index}>
+        <button
+          role="tab"
+          class="flex-1 cursor-pointer text-center hover:text-theme-red"
+          data-index={index}
+        >
           {feature.title}
         </button>
       ))
