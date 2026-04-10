@@ -16,7 +16,7 @@ import faqs from "@/data/faqs";
       </p>
     </div>
     <div class="mx-auto mt-12 flex flex-col sm:w-3/4 lg:w-5/12">
-      <ul>
+      <ul class="divide-y-2 divide-theme-blue/10 border-y-2 border-theme-blue/10">
         {faqs.map((faq, index) => <FAQItem faq={faq} index={index} />)}
       </ul>
       <Button theme="primary" class="mt-12 self-center">More Info</Button>
