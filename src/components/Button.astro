@@ -3,11 +3,11 @@ import type { HTMLAttributes } from "astro/types";
 
 const variant = {
   primary:
-    "bg-theme-purple text-theme-white hover:bg-theme-white hover:text-theme-purple hover:outline-2 hover:outline-theme-purple",
+    "bg-theme-purple text-theme-white hover:bg-theme-white hover:text-theme-purple outline-theme-purple",
   secondary:
-    "bg-theme-white text-theme-blue hover:bg-theme-white hover:text-theme-blue hover:outline-2 hover:outline-theme-blue",
+    "bg-theme-gray text-theme-blue hover:bg-theme-white hover:text-theme-blue outline-theme-gray hover:outline-theme-blue font-medium",
   tertiary:
-    "bg-theme-red text-white hover:bg-theme-white hover:text-theme-red hover:outline-2 hover:outline-theme-red",
+    "bg-theme-red text-theme-white hover:bg-theme-white hover:text-theme-red outline-theme-red font-medium",
 };
 
 interface Props extends HTMLAttributes<"button"> {
@@ -21,7 +21,7 @@ const { theme = "primary", ...rest } = Astro.props as Props;
   id={rest.id}
   type={rest.type || "button"}
   class:list={[
-    "rounded-md px-6 py-3 shadow-md transition duration-300",
+    "cursor-pointer rounded-sm px-6 py-3 shadow-lg outline-2 transition-colors duration-300",
     variant[theme],
     rest.class,
   ]}
