@@ -14,15 +14,18 @@ const { faq, index } = Astro.props;
 
 <li data-faq-index={index}>
   <button
-    class="faq-button flex w-full items-center border-b py-4 text-left transition-all duration-200 hover:bg-gray-50"
+    class="faq-button flex w-full items-center border-b-2 border-theme-blue/10 py-5 text-left transition-all duration-200"
     type="button"
     data-faq-index={index}
   >
-    <span class="flex-1 pr-4">{faq.question}</span>
+    <span class="flex-1 pr-4 text-lg font-medium text-theme-blue/75 hover:text-theme-red"
+      >{faq.question}</span
+    >
     <Icon
-      name="fa6-solid:chevron-down"
-      class="faq-chevron cursor-pointer text-theme-purple transition-transform duration-200"
-      data-faq-chevron
+      name="icon-arrow"
+      class="faq-chevron cursor-pointer stroke-current text-theme-purple transition-transform duration-200"
+      width={18}
+      height={12}
     />
   </button>
   <div
@@ -68,6 +71,7 @@ const { faq, index } = Astro.props;
       document.querySelectorAll(".faq-chevron").forEach((chevron) => {
         const chevronEl = chevron as HTMLElement;
         chevronEl.style.transform = "rotate(0deg)";
+        chevronEl.classList.remove("text-theme-red");
       });
 
       // Open clicked item if it wasn't already open
@@ -80,6 +84,7 @@ const { faq, index } = Astro.props;
           content.style.maxHeight = content.scrollHeight + "px";
           content.style.opacity = "1";
           chevron.style.transform = "rotate(180deg)";
+          chevron.classList.add("text-theme-red");
         }
       } else {
         openIndex = -1;
