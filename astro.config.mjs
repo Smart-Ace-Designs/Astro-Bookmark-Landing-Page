@@ -9,6 +9,9 @@ import icon from "astro-icon";
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      exclude: ["astro/runtime/client/dev-toolbar/entrypoint.js"],
+    },
   },
   integrations: [
     icon({
