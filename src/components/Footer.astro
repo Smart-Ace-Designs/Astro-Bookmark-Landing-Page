@@ -9,12 +9,12 @@ import logo from "@/assets/logo-bookmark-white.png";
   <div class="container flex flex-col items-center md:flex-row">
     <div class="flex flex-1 flex-wrap items-center justify-center gap-12 md:justify-start">
       <Image src={logo} alt="Bookmark" loading="lazy" />
-      <ul class="flex gap-12 text-xs text-white uppercase">
+      <ul class="flex gap-12 text-xs text-theme-gray uppercase">
         <li>
-          <a href="/" class="transition-colors duration-300 hover:text-theme-red/65">Features</a>
+          <a href="/" class="transition-colors duration-300 hover:text-theme-red">Features</a>
         </li>
-        <li><a href="/" class="hover:text-theme-red/65">Pricing</a></li>
-        <li><a href="/" class="hover:text-theme-red/65">Contact</a></li>
+        <li><a href="/" class="hover:text-theme-red">Pricing</a></li>
+        <li><a href="/" class="hover:text-theme-red">Contact</a></li>
       </ul>
     </div>
     <ul class="mt-12 flex gap-10 md:mt-0">
@@ -24,12 +24,9 @@ import logo from "@/assets/logo-bookmark-white.png";
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"
+          class="hover:cursor-pointer"
         >
-          <Icon
-            name="icon-facebook"
-            class="fill-current text-2xl text-theme-white hover:cursor-pointer"
-            title="Facebook"
-          />
+          <Icon name="icon-facebook" class="text-2xl" title="Facebook" />
         </a>
       </li>
       <li>
@@ -38,12 +35,9 @@ import logo from "@/assets/logo-bookmark-white.png";
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Twitter/X"
+          class="hover:cursor-pointer"
         >
-          <Icon
-            name="icon-twitter"
-            class="fill-current text-2xl text-theme-white hover:cursor-pointer"
-            title="Twitter/X"
-          />
+          <Icon name="icon-twitter" class="text-2xl" title="Twitter/X" />
         </a>
       </li>
     </ul>

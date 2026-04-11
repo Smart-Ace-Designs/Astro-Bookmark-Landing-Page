@@ -10,13 +10,13 @@ import faqs from "@/data/faqs";
       <h1 class="text-center text-[2.0625rem] font-medium text-theme-blue">
         Frequently Asked Questions
       </h1>
-      <p class="mt-4 text-center text-lg font-medium text-theme-blue/35">
+      <p class="mt-4 text-center text-lg font-medium text-theme-grayish-blue">
         Here are some of our FAQs. If you have any other questions you'd like answered please feel
         free to email us.
       </p>
     </div>
     <div class="mx-auto mt-12 flex flex-col sm:w-3/4 lg:w-5/12">
-      <ul class="divide-y-2 divide-theme-blue/10 border-y-2 border-theme-blue/10">
+      <ul class="divide-y-2 divide-theme-gray border-y-2 border-theme-gray">
         {faqs.map((faq, index) => <FAQItem faq={faq} index={index} />)}
       </ul>
       <Button theme="primary" class="mt-12 self-center">More Info</Button>
