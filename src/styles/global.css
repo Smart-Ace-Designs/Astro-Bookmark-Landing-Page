@@ -9,7 +9,8 @@
   --color-theme-red: hsl(0, 94%, 66%);
   --color-theme-blue: hsl(229, 31%, 21%);
   --color-theme-gray: hsl(0, 0%, 97%);
-  --color-theme-white: #f7f7f7;
+  --color-theme-grayish-blue: hsl(229, 8%, 60%);
+  --color-theme-white: #ffffff;
 
   --font-rubik: "Rubik", "sans-serif";
 }
