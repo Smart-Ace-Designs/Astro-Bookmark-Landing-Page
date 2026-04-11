@@ -4,11 +4,11 @@ import Button from "./Button.astro";
 
 <section class="bg-theme-purple py-20 text-theme-white">
   <form class="container" id="sub-form" novalidate>
-    <div class="mx-auto sm:w-3/4 lg:w-2/4">
+    <div class="mx-auto sm:w-3/4 lg:w-2/5">
       <p class="mb-8 text-center font-light uppercase">35,000+ already joined</p>
       <p class="text-center text-3xl">Stay up-to-date with what we're doing</p>
-      <div class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-start">
-        <div class="relative flex flex-1 flex-col rounded-t-md p-0.5" id="email-container">
+      <div class="mt-8 flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-5">
+        <div class="flex flex-1 flex-col items-center rounded-md" id="email-container">
           <label for="email" class="sr-only">Enter your email address</label>
           <input
             type="email"
@@ -20,7 +20,7 @@ import Button from "./Button.astro";
             class="w-full rounded-md bg-theme-white px-6 py-3 text-theme-blue placeholder:text-theme-grayish-blue focus:outline-none"
           />
           <p
-            class="invisible absolute top-full left-0 mt-1 bg-theme-red text-sm text-theme-gray italic sm:static"
+            class="invisible p-2 text-xs text-theme-gray italic sm:static"
             id="message"
             role="alert"
             aria-live="polite"
@@ -51,14 +51,14 @@ import Button from "./Button.astro";
     if (error) {
       message.classList.remove("invisible");
       message.classList.add("visible");
-      container.classList.add("bg-theme-red");
+      container.classList.add("bg-theme-red", "p-0.5");
       emailInput.setAttribute("aria-invalid", "true");
       message.setAttribute("role", "alert");
     } else {
       message.classList.remove("visible");
       message.classList.add("invisible");
       message.removeAttribute("role");
-      container.classList.remove("bg-theme-red");
+      container.classList.remove("bg-theme-red", "p-0.5");
       emailInput.setAttribute("aria-invalid", "false");
       form.reset();
       Swal.fire(`Successfully subscribed: ${data}`);
