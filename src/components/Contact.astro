@@ -61,7 +61,11 @@ import Button from "./Button.astro";
       container.classList.remove("bg-theme-red", "p-0.5");
       emailInput.setAttribute("aria-invalid", "false");
       form.reset();
-      Swal.fire(`Successfully subscribed: ${data}`);
+      Swal.fire({
+        title: "Success",
+        text: `Your email "${data}" has been added to our notification list.`,
+        icon: "success",
+      });
     }
   });
 
