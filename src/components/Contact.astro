@@ -8,7 +8,7 @@ import Button from "./Button.astro";
       <p class="mb-8 text-center font-light uppercase">35,000+ already joined</p>
       <p class="text-center text-3xl">Stay up-to-date with what we're doing</p>
       <div class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-start">
-        <div class="relative flex flex-1 flex-col">
+        <div class="relative flex flex-1 flex-col rounded-t-md p-0.5" id="email-container">
           <input
             type="email"
             name="email"
@@ -17,7 +17,7 @@ import Button from "./Button.astro";
             class="w-full rounded-md bg-theme-white px-6 py-3 text-theme-blue placeholder:text-theme-grayish-blue focus:outline-none"
           />
           <p
-            class="invisible absolute top-full left-0 bg-theme-red p-1 text-sm text-theme-gray italic sm:static"
+            class="invisible absolute top-full left-0 mt-1 bg-theme-red text-sm text-theme-gray italic sm:static"
             id="message"
           >
             Whoops! Make sure it's an email
@@ -35,6 +35,7 @@ import Button from "./Button.astro";
 
   const form = document.querySelector("#sub-form") as HTMLFormElement;
   const message = document.querySelector("#message") as HTMLParagraphElement;
+  const container = document.querySelector("#email-container") as HTMLDivElement;
 
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -44,9 +45,11 @@ import Button from "./Button.astro";
     if (error) {
       message.classList.remove("invisible");
       message.classList.add("visible");
+      container.classList.add("bg-theme-red");
     } else {
       message.classList.remove("visible");
       message.classList.add("invisible");
+      container.classList.remove("bg-theme-red");
       form.reset();
       Swal.fire(`Successfully subscribed: ${data}`);
     }

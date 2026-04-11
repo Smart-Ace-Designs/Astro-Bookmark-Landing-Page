@@ -21,7 +21,6 @@ export default defineConfig({
     icon({
       include: {
         "fa6-solid": ["bars", "chevron-down"],
-        "fa6-brands": ["square-facebook", "x-twitter"],
       },
     }),
   ],
@@ -31,7 +30,7 @@ export default defineConfig({
       name: "Rubik",
       cssVariable: "--font-rubik",
       weights: [400, 500],
-      styles: ["normal"],
+      styles: ["normal", "italic"],
     },
   ],
 });
