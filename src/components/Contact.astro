@@ -17,7 +17,9 @@ import Button from "./Button.astro";
         />
         <Button type="submit" theme="tertiary">Contact Us</Button>
       </div>
-      <p class="bg-theme-red text-theme-gray italic" id="message"></p>
+      <p class="hidden bg-theme-red p-1 text-sm text-theme-gray italic" id="message">
+        Whoops! Make sure it's an email
+      </p>
     </div>
   </form>
 </section>
@@ -26,16 +28,19 @@ import Button from "./Button.astro";
   import { actions } from "astro:actions";
 
   const form = document.querySelector("#sub-form") as HTMLFormElement;
+  const message = document.querySelector("#message") as HTMLParagraphElement;
+
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const { data, error } = await actions.subscribe(formData);
 
-    const message = document.querySelector("#message") as HTMLParagraphElement;
     if (error) {
-      message.textContent = "Whoops! Make sure it's an email";
+      message.classList.remove("hidden");
+      message.classList.add("block");
     } else {
-      message.textContent = "";
+      message.classList.remove("block");
+      message.classList.add("hidden");
       form.reset();
       alert(`Successfully subscribed: ${data}`);
     }
