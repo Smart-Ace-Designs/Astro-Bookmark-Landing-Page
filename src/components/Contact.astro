@@ -62,9 +62,14 @@ import Button from "./Button.astro";
       emailInput.setAttribute("aria-invalid", "false");
       form.reset();
       Swal.fire({
-        title: "Success",
+        title: "Success!",
         text: `Your email "${data}" has been added to our notification list.`,
         icon: "success",
+        buttonsStyling: false,
+        customClass: {
+          confirmButton:
+            "cursor-pointer rounded-sm px-6 py-3 shadow-lg outline-2 transition-colors duration-300 bg-theme-purple text-theme-white hover:bg-theme-white hover:text-theme-purple outline-theme-purple mb-6",
+        },
       });
     }
   });
