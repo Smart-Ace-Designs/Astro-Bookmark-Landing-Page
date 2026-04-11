@@ -70,7 +70,7 @@ import Button from "./Button.astro";
       message.classList.remove("visible");
       message.classList.add("invisible");
       message.removeAttribute("role");
-      container.classList.remove("bg-theme-red");
+      container.classList.remove("bg-theme-red", "p-0.5");
       emailInput.setAttribute("aria-invalid", "false");
     }
   });
