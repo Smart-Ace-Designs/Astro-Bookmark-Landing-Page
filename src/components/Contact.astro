@@ -9,16 +9,21 @@ import Button from "./Button.astro";
       <p class="text-center text-3xl">Stay up-to-date with what we're doing</p>
       <div class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-start">
         <div class="relative flex flex-1 flex-col rounded-t-md p-0.5" id="email-container">
+          <label for="email" class="sr-only">Enter your email address</label>
           <input
             type="email"
             name="email"
             id="email"
+            aria-describedby="email-error"
+            aria-invalid="false"
             placeholder="Enter your email address"
             class="w-full rounded-md bg-theme-white px-6 py-3 text-theme-blue placeholder:text-theme-grayish-blue focus:outline-none"
           />
           <p
             class="invisible absolute top-full left-0 mt-1 bg-theme-red text-sm text-theme-gray italic sm:static"
             id="message"
+            role="alert"
+            aria-live="polite"
           >
             Whoops! Make sure it's an email
           </p>
@@ -34,6 +39,7 @@ import Button from "./Button.astro";
   import Swal from "sweetalert2";
 
   const form = document.querySelector("#sub-form") as HTMLFormElement;
+  const emailInput = form?.querySelector("input") as HTMLInputElement;
   const message = document.querySelector("#message") as HTMLParagraphElement;
   const container = document.querySelector("#email-container") as HTMLDivElement;
 
@@ -46,12 +52,26 @@ import Button from "./Button.astro";
       message.classList.remove("invisible");
       message.classList.add("visible");
       container.classList.add("bg-theme-red");
+      emailInput.setAttribute("aria-invalid", "true");
+      message.setAttribute("role", "alert");
     } else {
       message.classList.remove("visible");
       message.classList.add("invisible");
+      message.removeAttribute("role");
       container.classList.remove("bg-theme-red");
+      emailInput.setAttribute("aria-invalid", "false");
       form.reset();
       Swal.fire(`Successfully subscribed: ${data}`);
+    }
+  });
+
+  emailInput?.addEventListener("input", () => {
+    if (message.classList.contains("visible")) {
+      message.classList.remove("visible");
+      message.classList.add("invisible");
+      message.removeAttribute("role");
+      container.classList.remove("bg-theme-red");
+      emailInput.setAttribute("aria-invalid", "false");
     }
   });
 </script>
