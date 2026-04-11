@@ -9,16 +9,16 @@ interface Props {
 }
 const { imagePath } = Astro.props;
 
-const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/*.{jpeg,jpg,png,gif}");
-if (!images[imagePath])
-  throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+// const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/*.{jpeg,jpg,png,gif}");
+// if (!images[imagePath])
+//   throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
 ---
 
 <article class="relative">
   <div class="container flex flex-col items-center justify-center gap-x-24 lg:flex-row">
     <div class="z-10 mb-10 flex flex-1 justify-center lg:mb-0">
-      <Image
-        src={images[imagePath]()}
+      <img
+        src={imagePath}
         loading="lazy"
         alt="Bookmark Feature"
         class="h-5/6 w-5/6 sm:h-3/4 sm:w-3/4 md:h-full md:w-full"
