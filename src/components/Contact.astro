@@ -7,19 +7,21 @@ import Button from "./Button.astro";
     <div class="mx-auto sm:w-3/4 lg:w-2/4">
       <p class="mb-8 text-center font-light uppercase">35,000+ already joined</p>
       <p class="text-center text-3xl">Stay up-to-date with what we're doing</p>
-      <div class="mt-8 flex flex-col gap-6 sm:flex-row">
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter your email address"
-          class="flex-1 rounded-md bg-theme-white px-6 py-3 text-theme-blue placeholder:text-theme-blue/30 focus:outline-none"
-        />
+      <div class="mt-8 flex flex-col gap-6 sm:flex-row sm:items-start">
+        <div class="flex flex-1 flex-col">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email address"
+            class="w-full rounded-md bg-theme-white px-6 py-3 text-theme-blue placeholder:text-theme-blue/30 focus:outline-none"
+          />
+          <p class="invisible bg-theme-red p-1 text-sm text-theme-gray italic" id="message">
+            Whoops! Make sure it's an email
+          </p>
+        </div>
         <Button type="submit" theme="tertiary">Contact Us</Button>
       </div>
-      <p class="invisible bg-theme-red p-1 text-sm text-theme-gray italic" id="message">
-        Whoops! Make sure it's an email
-      </p>
     </div>
   </form>
 </section>
