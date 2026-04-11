@@ -17,7 +17,7 @@ import Button from "./Button.astro";
         />
         <Button type="submit" theme="tertiary">Contact Us</Button>
       </div>
-      <p class="hidden bg-theme-red p-1 text-sm text-theme-gray italic" id="message">
+      <p class="invisible bg-theme-red p-1 text-sm text-theme-gray italic" id="message">
         Whoops! Make sure it's an email
       </p>
     </div>
@@ -26,6 +26,7 @@ import Button from "./Button.astro";
 
 <script>
   import { actions } from "astro:actions";
+  import Swal from "sweetalert2";
 
   const form = document.querySelector("#sub-form") as HTMLFormElement;
   const message = document.querySelector("#message") as HTMLParagraphElement;
@@ -36,13 +37,13 @@ import Button from "./Button.astro";
     const { data, error } = await actions.subscribe(formData);
 
     if (error) {
-      message.classList.remove("hidden");
-      message.classList.add("block");
+      message.classList.remove("invisible");
+      message.classList.add("visible");
     } else {
-      message.classList.remove("block");
-      message.classList.add("hidden");
+      message.classList.remove("visible");
+      message.classList.add("invisible");
       form.reset();
-      alert(`Successfully subscribed: ${data}`);
+      Swal.fire(`Successfully subscribed: ${data}`);
     }
   });
 </script>
