@@ -20,7 +20,7 @@ export default defineConfig({
   integrations: [
     icon({
       include: {
-        "fa6-solid": ["bars", "chevron-down"],
+        "fa6-solid": ["bars"],
       },
     }),
   ],
