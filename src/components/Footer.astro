@@ -1,14 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
-import Image from "astro/components/Image.astro";
-import logo from "@/assets/logo-bookmark-white.png";
 import links from "@/data/links";
 ---
 
 <footer class="bg-theme-blue py-8">
   <div class="container flex flex-col items-center md:flex-row">
     <div class="flex flex-1 flex-wrap items-center justify-center gap-12 md:justify-start">
-      <Image src={logo} alt="Bookmark" loading="lazy" />
+      <img src="/logo-bookmark-footer.svg" alt="Bookmark Landing Page" loading="lazy" />
       <ul class="flex gap-12 text-xs text-theme-gray uppercase">
         {
           links.map((link) => (
