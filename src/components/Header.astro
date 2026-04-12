@@ -6,7 +6,7 @@ import MobileMenu from "@/components/MobileMenu.astro";
 ---
 
 <header>
-  <nav class="container mt-4 flex items-center py-4 sm:mt-8">
+  <nav class="container mt-4 flex items-center py-4 sm:mt-8" id="nav">
     <div class="py-1">
       <img src="/logo-bookmark.svg" alt="Bookmark Landing Page" />
     </div>
@@ -30,7 +30,7 @@ import MobileMenu from "@/components/MobileMenu.astro";
   </nav>
   <div
     id="mobile-menu"
-    class="fixed inset-0 z-20 hidden h-screen w-full bg-theme-blue/90 backdrop-invert backdrop-opacity-10"
+    class="fixed inset-0 z-20 hidden h-screen w-full bg-theme-blue/90 backdrop-invert backdrop-opacity-20"
   >
     <MobileMenu />
   </div>
@@ -40,27 +40,18 @@ import MobileMenu from "@/components/MobileMenu.astro";
   document.addEventListener("astro:page-load", () => {
     const menuToggle = document.getElementById("menu-toggle");
     const mobileMenu = document.getElementById("mobile-menu");
+    const nav = document.getElementById("nav");
 
     function toggleMenu(forceClose = false) {
-      if (mobileMenu && menuToggle) {
+      if (mobileMenu && menuToggle && nav) {
         const isClosing = forceClose || !mobileMenu.classList.contains("hidden");
         mobileMenu.classList.toggle("hidden", isClosing);
+        nav.classList.toggle("hidden");
         document.body.style.overflow = isClosing ? "" : "hidden";
         menuToggle.setAttribute("aria-expanded", String(!isClosing));
       }
     }
     menuToggle?.addEventListener("click", () => toggleMenu());
     window.addEventListener("close-menu", () => toggleMenu(true));
-
-    // Move this section of code to mobile menu component...
-    const closeButton = document.getElementById("close-menu");
-    // const links = document.querySelectorAll("a");
-
-    function dispatchClose() {
-      window.dispatchEvent(new CustomEvent("close-menu"));
-    }
-
-    closeButton?.addEventListener("click", dispatchClose);
-    // links.forEach((link) => link.addEventListener("click", dispatchClose));
   });
 </script>

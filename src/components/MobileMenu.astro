@@ -1,34 +1,42 @@
 ---
 import links from "@/data/links";
 import closeButton from "@/assets/icon-close.svg";
-import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 ---
 
-<nav>
-  <button id="close-menu"> x </button>
-  <ul>
+<nav class="mx-8">
+  <div class="flex justify-between border-b-theme-grayish-blue py-10">
+    <img src="/logo-bookmark.svg" alt="Bookmark Landing Page" />
+    <button id="close-menu" class="text-theme-grayish-blue">
+      <Image src={closeButton} alt="" aria-label="Close" class="cursor-pointer" />
+    </button>
+  </div>
+
+  <ul
+    class="mx-auto flex w-full flex-col justify-center divide-y divide-theme-grayish-blue/50 border-t border-t-theme-grayish-blue/50 text-center text-xl tracking-widest text-theme-gray uppercase"
+  >
     {
       links.map((link) => (
-        <li>
-          <a href={link.url} class="transition-colors duration-300 hover:text-theme-red">
-            {link.name}
-          </a>
+        <li class="w-full py-5 transition-colors duration-300">
+          <a href={link.url}>{link.name}</a>
         </li>
       ))
     }
+    <li class="w-full rounded-sm border-2 border-theme-gray py-2 transition-colors duration-300">
+      <a href="/"> Login </a>
+    </li>
   </ul>
 </nav>
 
 <script>
   document.addEventListener("astro:page-load", () => {
     const closeButton = document.getElementById("close-menu");
-    const links = document.querySelectorAll("a");
+    const loginButton = document.getElementById("login-button");
 
     function dispatchClose() {
       window.dispatchEvent(new CustomEvent("close-menu"));
     }
-
     closeButton?.addEventListener("click", dispatchClose);
-    links.forEach((link) => link.addEventListener("click", dispatchClose));
+    loginButton?.addEventListener("click", dispatchClose);
   });
 </script>
