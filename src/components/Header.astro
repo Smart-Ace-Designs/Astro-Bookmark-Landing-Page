@@ -16,8 +16,43 @@ import Button from "@/components/Button.astro";
       <li><a href="/" class="transition duration-300 hover:text-theme-red">Contact</a></li>
       <Button class="px-8.5 uppercase" theme="tertiary">Login</Button>
     </ul>
-    <div class="flex flex-1 justify-end md:hidden">
+    <div class="flex flex-1 justify-end md:hidden" id="menu-toggle">
       <Icon name="fa6-solid:bars" class="text-2xl" />
     </div>
   </nav>
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 z-20 hidden h-screen w-full bg-theme-blue/90 backdrop-invert backdrop-opacity-10"
+  >
+    <p class="text-center text-4xl text-theme-white" id="close-menu">Close</p>
+  </div>
 </header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    function toggleMenu(forceClose = false) {
+      if (mobileMenu && menuToggle) {
+        const isClosing = forceClose || !mobileMenu.classList.contains("hidden");
+        mobileMenu.classList.toggle("hidden", isClosing);
+        document.body.style.overflow = isClosing ? "" : "hidden";
+        menuToggle.setAttribute("aria-expanded", String(!isClosing));
+      }
+    }
+    menuToggle?.addEventListener("click", () => toggleMenu());
+    window.addEventListener("close-menu", () => toggleMenu(true));
+
+    // Move this section of code to mobile menu component...
+    const closeButton = document.getElementById("close-menu");
+    // const links = document.querySelectorAll("a");
+
+    function dispatchClose() {
+      window.dispatchEvent(new CustomEvent("close-menu"));
+    }
+
+    closeButton?.addEventListener("click", dispatchClose);
+    // links.forEach((link) => link.addEventListener("click", dispatchClose));
+  });
+</script>
