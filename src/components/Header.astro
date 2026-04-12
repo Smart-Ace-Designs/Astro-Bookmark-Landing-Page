@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from "@/components/Button.astro";
+import links from "@/data/links";
+import MobileMenu from "@/components/MobileMenu.astro";
 ---
 
 <header>
@@ -11,9 +13,15 @@ import Button from "@/components/Button.astro";
     <ul
       class="hidden flex-1 items-center justify-end gap-11 text-[0.8125rem] font-medium tracking-widest text-theme-grayish-blue uppercase md:flex"
     >
-      <li><a href="/" class="transition duration-300 hover:text-theme-red">Features</a></li>
-      <li><a href="/" class="transition duration-300 hover:text-theme-red">Pricing</a></li>
-      <li><a href="/" class="transition duration-300 hover:text-theme-red">Contact</a></li>
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.url} class="transition duration-300 hover:text-theme-red">
+              {link.name}
+            </a>
+          </li>
+        ))
+      }
       <Button class="px-8.5 uppercase" theme="tertiary">Login</Button>
     </ul>
     <div class="flex flex-1 justify-end md:hidden" id="menu-toggle">
@@ -24,7 +32,7 @@ import Button from "@/components/Button.astro";
     id="mobile-menu"
     class="fixed inset-0 z-20 hidden h-screen w-full bg-theme-blue/90 backdrop-invert backdrop-opacity-10"
   >
-    <p class="text-center text-4xl text-theme-white" id="close-menu">Close</p>
+    <MobileMenu />
   </div>
 </header>
 

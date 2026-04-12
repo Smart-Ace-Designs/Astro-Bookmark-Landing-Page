@@ -1,0 +1,34 @@
+---
+import links from "@/data/links";
+import closeButton from "@/assets/icon-close.svg";
+import { Icon } from "astro-icon/components";
+---
+
+<nav>
+  <button id="close-menu"> x </button>
+  <ul>
+    {
+      links.map((link) => (
+        <li>
+          <a href={link.url} class="transition-colors duration-300 hover:text-theme-red">
+            {link.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const closeButton = document.getElementById("close-menu");
+    const links = document.querySelectorAll("a");
+
+    function dispatchClose() {
+      window.dispatchEvent(new CustomEvent("close-menu"));
+    }
+
+    closeButton?.addEventListener("click", dispatchClose);
+    links.forEach((link) => link.addEventListener("click", dispatchClose));
+  });
+</script>

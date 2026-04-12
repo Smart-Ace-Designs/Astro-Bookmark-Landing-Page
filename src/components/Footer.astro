@@ -1,8 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import Image from "astro/components/Image.astro";
-
 import logo from "@/assets/logo-bookmark-white.png";
+import links from "@/data/links";
 ---
 
 <footer class="bg-theme-blue py-8">
@@ -10,11 +10,15 @@ import logo from "@/assets/logo-bookmark-white.png";
     <div class="flex flex-1 flex-wrap items-center justify-center gap-12 md:justify-start">
       <Image src={logo} alt="Bookmark" loading="lazy" />
       <ul class="flex gap-12 text-xs text-theme-gray uppercase">
-        <li>
-          <a href="/" class="transition-colors duration-300 hover:text-theme-red">Features</a>
-        </li>
-        <li><a href="/" class="hover:text-theme-red">Pricing</a></li>
-        <li><a href="/" class="hover:text-theme-red">Contact</a></li>
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.url} class="transition-colors duration-300 hover:text-theme-red">
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
     <ul class="mt-12 flex gap-10 md:mt-0">
