@@ -29,14 +29,12 @@ import { Image } from "astro:assets";
 </nav>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const closeButton = document.getElementById("close-menu");
-    const loginButton = document.getElementById("login-button");
+  const closeButton = document.getElementById("close-menu");
+  const loginButton = document.getElementById("login-button");
 
-    function dispatchClose() {
-      window.dispatchEvent(new CustomEvent("close-menu"));
-    }
-    closeButton?.addEventListener("click", dispatchClose);
-    loginButton?.addEventListener("click", dispatchClose);
-  });
+  function dispatchClose() {
+    window.dispatchEvent(new CustomEvent("close-menu"));
+  }
+  closeButton?.addEventListener("click", dispatchClose);
+  loginButton?.addEventListener("click", dispatchClose);
 </script>

@@ -44,35 +44,33 @@ import features from "../data/features.ts";
 
 <script>
   import features from "../data/features.ts";
-  document.addEventListener("astro:page-load", () => {
-    const tabs = document.querySelectorAll('[role="tab"]');
-    const tabContent = document.getElementById("tab-content");
-    const activeFeature = document.getElementById("active-feature");
+  const tabs = document.querySelectorAll('[role="tab"]');
+  const tabContent = document.getElementById("tab-content");
+  const activeFeature = document.getElementById("active-feature");
 
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
-        tab.setAttribute("aria-selected", "true");
-        const indexAttr = tab.getAttribute("data-index");
-        if (!indexAttr || !tabContent) return;
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
+      tab.setAttribute("aria-selected", "true");
+      const indexAttr = tab.getAttribute("data-index");
+      if (!indexAttr || !tabContent) return;
 
-        const index = parseInt(indexAttr);
-        const feature = features[index];
-        const article = tabContent.querySelector("article");
-        if (!article) return;
+      const index = parseInt(indexAttr);
+      const feature = features[index];
+      const article = tabContent.querySelector("article");
+      if (!article) return;
 
-        const headerSlot = article.querySelector("h1");
-        const contentSlot = article.querySelector("p");
-        const img = article.querySelector("img");
+      const headerSlot = article.querySelector("h1");
+      const contentSlot = article.querySelector("p");
+      const img = article.querySelector("img");
 
-        if (headerSlot) headerSlot.textContent = feature.title;
-        if (contentSlot) contentSlot.textContent = feature.description;
-        if (img) img.src = feature.image;
+      if (headerSlot) headerSlot.textContent = feature.title;
+      if (contentSlot) contentSlot.textContent = feature.description;
+      if (img) img.src = feature.image;
 
-        if (activeFeature) {
-          activeFeature.style.transform = `translateX(${index * 100}%)`;
-        }
-      });
+      if (activeFeature) {
+        activeFeature.style.transform = `translateX(${index * 100}%)`;
+      }
     });
   });
 </script>
