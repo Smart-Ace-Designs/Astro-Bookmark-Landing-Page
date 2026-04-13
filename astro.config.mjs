@@ -17,13 +17,7 @@ export default defineConfig({
   },
   adapter: netlify(),
   output: "server",
-  integrations: [
-    icon({
-      include: {
-        "fa6-solid": ["bars"],
-      },
-    }),
-  ],
+  integrations: [icon()],
   fonts: [
     {
       provider: fontProviders.google(),
