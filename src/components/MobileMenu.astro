@@ -1,14 +1,12 @@
 ---
 import links from "@/data/links";
-import closeButton from "@/assets/icon-close.svg";
-import { Image } from "astro:assets";
 ---
 
 <nav class="mx-8">
   <div class="flex justify-between border-b-theme-grayish-blue py-10">
     <img src="/logo-bookmark-mobile.svg" alt="Bookmark Landing Page" />
-    <button id="close-menu" class="text-theme-grayish-blue">
-      <Image src={closeButton} alt="" aria-label="Close" class="cursor-pointer" />
+    <button id="close-menu" class="cursor-pointer text-theme-grayish-blue">
+      <img src="/icon-close.svg" alt="" aria-label="Close" />
     </button>
   </div>
 
