@@ -47,7 +47,7 @@ import links from "@/data/links";
     if (mobileMenu && menuToggle && nav) {
       const isClosing = forceClose || !mobileMenu.classList.contains("hidden");
       mobileMenu.classList.toggle("hidden", isClosing);
-      nav.classList.toggle("hidden");
+      nav.classList.toggle("invisible");
       document.body.style.overflow = isClosing ? "" : "hidden";
       menuToggle.setAttribute("aria-expanded", String(!isClosing));
     }
