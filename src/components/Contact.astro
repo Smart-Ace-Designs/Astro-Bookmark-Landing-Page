@@ -3,7 +3,7 @@ import Button from "./Button.astro";
 ---
 
 <section class="bg-theme-purple py-20 text-theme-white">
-  <form class="container" id="sub-form" novalidate>
+  <form class="container" id="sub-form" novalidate data-astro-reload>
     <div class="mx-auto sm:w-3/4 lg:w-2/5">
       <p class="mb-8 text-center font-light uppercase">35,000+ already joined</p>
       <p class="text-center text-3xl">Stay up-to-date with what we're doing</p>
@@ -38,49 +38,51 @@ import Button from "./Button.astro";
   import { actions } from "astro:actions";
   import Swal from "sweetalert2";
 
-  const form = document.querySelector("#sub-form") as HTMLFormElement;
-  const emailInput = form?.querySelector("input") as HTMLInputElement;
-  const message = document.querySelector("#message") as HTMLParagraphElement;
-  const container = document.querySelector("#email-container") as HTMLDivElement;
+  document.addEventListener("astro:page-load", () => {
+    const form = document.querySelector("#sub-form") as HTMLFormElement;
+    const emailInput = form?.querySelector("input") as HTMLInputElement;
+    const message = document.querySelector("#message") as HTMLParagraphElement;
+    const container = document.querySelector("#email-container") as HTMLDivElement;
 
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const { data, error } = await actions.subscribe(formData);
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target as HTMLFormElement);
+      const { data, error } = await actions.subscribe(formData);
 
-    if (error) {
-      message.classList.remove("invisible");
-      message.classList.add("visible");
-      container.classList.add("bg-theme-red", "p-0.5");
-      emailInput.setAttribute("aria-invalid", "true");
-      message.setAttribute("role", "alert");
-    } else {
-      message.classList.remove("visible");
-      message.classList.add("invisible");
-      message.removeAttribute("role");
-      container.classList.remove("bg-theme-red", "p-0.5");
-      emailInput.setAttribute("aria-invalid", "false");
-      form.reset();
-      Swal.fire({
-        title: "Success!",
-        text: `Your email "${data}" has been added to our notification list.`,
-        icon: "success",
-        buttonsStyling: false,
-        customClass: {
-          confirmButton:
-            "cursor-pointer rounded-sm px-6 py-3 shadow-lg outline-2 transition-colors duration-300 bg-theme-purple text-theme-white hover:bg-theme-white hover:text-theme-purple outline-theme-purple mb-6",
-        },
-      });
-    }
-  });
+      if (error) {
+        message.classList.remove("invisible");
+        message.classList.add("visible");
+        container.classList.add("bg-theme-red", "p-0.5");
+        emailInput.setAttribute("aria-invalid", "true");
+        message.setAttribute("role", "alert");
+      } else {
+        message.classList.remove("visible");
+        message.classList.add("invisible");
+        message.removeAttribute("role");
+        container.classList.remove("bg-theme-red", "p-0.5");
+        emailInput.setAttribute("aria-invalid", "false");
+        form.reset();
+        Swal.fire({
+          title: "Success!",
+          text: `Your email "${data}" has been added to our notification list.`,
+          icon: "success",
+          buttonsStyling: false,
+          customClass: {
+            confirmButton:
+              "cursor-pointer rounded-sm px-6 py-3 shadow-lg outline-2 transition-colors duration-300 bg-theme-purple text-theme-white hover:bg-theme-white hover:text-theme-purple outline-theme-purple mb-6",
+          },
+        });
+      }
+    });
 
-  emailInput?.addEventListener("input", () => {
-    if (message.classList.contains("visible")) {
-      message.classList.remove("visible");
-      message.classList.add("invisible");
-      message.removeAttribute("role");
-      container.classList.remove("bg-theme-red", "p-0.5");
-      emailInput.setAttribute("aria-invalid", "false");
-    }
+    emailInput?.addEventListener("input", () => {
+      if (message.classList.contains("visible")) {
+        message.classList.remove("visible");
+        message.classList.add("invisible");
+        message.removeAttribute("role");
+        container.classList.remove("bg-theme-red", "p-0.5");
+        emailInput.setAttribute("aria-invalid", "false");
+      }
+    });
   });
 </script>
